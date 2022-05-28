@@ -1,2 +1,6 @@
 cache/
 out/
+
+# Personal packages for LSP
+package.json
+package-lock.json
