@@ -7,6 +7,7 @@ import "../src/SimpleMinter.sol";
 import "../src/mocks/SimpleNFT.sol";
 
 /// @title Test Simple Minter contract
+/// @author 0xMouseLess
 contract SimpleMinterTest is Test {
 
   /// @notice Our mass minting contract

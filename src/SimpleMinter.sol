@@ -7,7 +7,7 @@ import "forge-std/console.sol";
 
 /// @title NFT mass minter 
 /// @author 0xMouseLess
-/// @notice Exploiting NFTs that don't track number of mints per address
+/// @notice Exploiting NFT drops that don't track number of mints per address
 contract SimpleMinter is Ownable, ERC721Holder {
 
     /// @notice NFT mint address
