@@ -21,8 +21,8 @@ forge test
 #### Notice :shipit:
 This repo is made only for **educational purposes**. The contracts included have been rewritten to only contain the **bare minimum needed to perfom a mass mint**. All gas saving alpha has been stripped away to improve the contracts readibility. If you want to take these to production, I highly suggest investing time into gas golfing and fine tuning your contracts.
 
-## Mint Type One: No Verifications
-These type of contract's have no sanity checks and only allow users to mint **up to** a certain number of NFTs per transation. We can easily create a custom contract that will repeadily loop and call the NFT's mint function with the `numberOfTokens` parameter set to `MAX_PUBLIC_MINT`.
+## Mint Type One: No Checks
+These type of contract's have no sanity checks and only allow users to mint **up to** a certain number of NFTs per transation. We can easily create a custom contract loops and repeatedly call the NFT's mint function.
 
 Example of a NFT mint function that does not have any sanity checks
 ```solidity
@@ -39,8 +39,8 @@ function mint(uint numberOfTokens) public payable {
 ```
 > [src/SimpleMinter.sol](./src/SimpleMinter.sol) contains an example of a mass minter for this type of drops 
 
-## Mint Type Two: Capped Mint Amount Per Address
-These type of contracts are more sophisticated as they track the amount minted by an address using a `mapping(address=>uint256)` which results in a **capped mint amout per address**. We can still mass mint these types of drops by using a factory design pattern to deploy new contracts (new address) that will do the minting.
+## Mint Type Two: Capped Mint Amt Per Address
+These type of contracts are more sophisticated as they track the amount minted by an address using a `mapping(address=>uint256)` which results in a **capped mint amout per address**. We can still mass mint these types of drops by using a factory design pattern to deploy multiple new contracts (new address) that do the minting.
 
 Example of a NFT mint function that caps the mint amount per address (take note of the `minted` mapping)
 ```solidity
