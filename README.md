@@ -2,7 +2,12 @@
 
 Practical examples on how to **mass mint NFT drops in a single transaction** using smart contracts.
 
-Drops vary significantly per NFT collection, this repo explores three differnt cases and how to approach them.
+Drops vary significantly per NFT collection, this repo explores 3 differnt cases and how to approach them.
+
+#### The 3 mint types that this repo explores are:
+- NFT that perform no mint checks
+- NFT that caps the mint amount per address
+- NFT that does not allow smart contracts to mint
 
 ## Usage 
 
