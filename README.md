@@ -86,7 +86,7 @@ These type of drops need to be executed using a scripting languge such as **java
 4) Sniff mempool to check if the drop is live 
 
 #### Execution when minting is live
-4) Gather all the signed txs together and place them in a [flashbots bundle](https://docs.flashbots.net/flashbots-auction/searchers/advanced/understanding-bundles)
+4) Place all signed txs in a [flashbots bundle](https://docs.flashbots.net/flashbots-auction/searchers/advanced/understanding-bundles)
 5) [optional] Transactions gas fees can be paid for through another account (smart contract using `coinbase.transfer()`) ex: [sponsored tx](https://github.com/flashbots/searcher-sponsored-tx)
 6) Once the bundle has been mined, programmatically move all minted NFTs to a single address 
 
