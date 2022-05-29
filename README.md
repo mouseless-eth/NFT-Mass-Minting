@@ -97,8 +97,8 @@ function mint(uint numberOfTokens) public payable {
 These type of drops need to be executed using a scripting languge such as **javascript**, **rust**, **python3**
 
 #### Setup before the mint
-1) Generate sets of private keys to use
-2) Seed all generated accounts with enough to pay for the mint price
+1) Generate private keys to use
+2) Seed all generated accounts with enough to pay for the total mint price
 3) Each account creates a signed transation to mint the max amount from the NFT contract, save these txs in a data structure (don't broadcast the txs)
 4) Sniff mempool to check if the drop is live 
 
