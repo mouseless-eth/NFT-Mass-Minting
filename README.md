@@ -64,6 +64,18 @@ function mint(uint numberOfTokens) public payable {
 ```
 > [src/CappedMinter.sol](./src/CappedMinter.sol) contains an example of a mass minter for this type of drop
 
+###### Relevant contract files
+```
+src
+├── CappedMinter.sol      // Factory contract to create n 'CappedHelper' instances     
+├── CappedHelper.sol      // Contract that handles minting
+├── IMintableERC721.sol   
+├── mocks
+│   ├── CappedNFT.sol          
+test
+├── CappedMinter.t.sol    
+```
+
 ## Mint Type Three: Minter Cannot Be A Smart Contract
 These type of mints make sure that only [EOA](https://ethdocs.org/en/latest/contracts-and-transactions/account-types-gas-and-transactions.html) are allowed to call the mint function. This is enforced through the following check `require(msg.sender == tx.origin)`. Because of this we cannot mass mint using a custom smart contract, but there is a work around. 
 
