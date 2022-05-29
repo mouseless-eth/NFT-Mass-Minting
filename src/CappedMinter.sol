@@ -3,15 +3,15 @@ pragma solidity ^0.8.0;
 
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
 import "openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Holder.sol";
-import "forge-std/console.sol";
 import "./IMintableERC721.sol";
+import "./CappedHelper.sol";
 
 /// @title NFT mass minter 
 /// @author 0xMouseLess
 /// @notice Exploiting NFT drops that don't track number of mints per address
-contract SimpleMinter is Ownable, ERC721Holder {
+contract CappedMinter is Ownable, ERC721Holder {
 
-    /// @notice NFT mint address
+    /// @dev NFT mint address
     IMintableERC721 targetNFT;
 
     /// @dev NFT mint price
@@ -29,12 +29,8 @@ contract SimpleMinter is Ownable, ERC721Holder {
     // @notice Repeatedly calls the mint function from the Doodles contract
     // @param numMints The number of times we want to call the mint function  
     function massMint(uint numMints) external payable onlyOwner {
-      require(numMints % MAX_MINT_PER_ADDRESS == 0, "numMints must be a multiple of MAX_MINT_PER_ADDRESS");
-      uint mintedSoFar = 0;
-      uint costPerMint = PRICE_PER_NFT*MAX_MINT_PER_ADDRESS;
-      while(mintedSoFar < numMints) {
-        targetNFT.mint{value: costPerMint}(MAX_MINT_PER_ADDRESS);
-        mintedSoFar += MAX_MINT_PER_ADDRESS;
+      for(uint i = 0; i < numMints; i++) {
+        new CappedHelper{value: PRICE_PER_NFT*MAX_MINT_PER_ADDRESS}(targetNFT);
       }
       // Return if there are any overflow
       payable(owner()).transfer(address(this).balance);
