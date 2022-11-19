@@ -103,8 +103,8 @@ These type of drops need to be executed using a scripting languge such as **java
 4) Sniff mempool to check if the drop is live 
 
 #### Execution when minting is live
-4) Place all signed txs in a [flashbots bundle](https://docs.flashbots.net/flashbots-auction/searchers/advanced/understanding-bundles)
-5) Once the bundle has been mined, programmatically move all minted NFTs to a single address 
+5) Place all signed txs in a [flashbots bundle](https://docs.flashbots.net/flashbots-auction/searchers/advanced/understanding-bundles)
+6) Once the bundle has been mined, programmatically move all minted NFTs to a single address 
 
 This works as each we are not using a smart contract and each `tx.origin` is unique. Using a flashbots bundle ensures all txs are **mined in the same block**.
 
